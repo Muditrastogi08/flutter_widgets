@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(myapp());
+}
+
+class myapp extends StatefulWidget {
+  const myapp({Key? key}) : super(key: key);
+
+  @override
+  _myappState createState() => _myappState();
+}
+
+class _myappState extends State<myapp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.red),
+      title: "Statefull",
+      home: homepage(),
+    );
+  }
+}
+
+class homepage extends StatefulWidget {
+  const homepage({Key? key}) : super(key: key);
+
+  @override
+  _homepageState createState() => _homepageState();
+}
+
+class _homepageState extends State<homepage> {
+  int num = 0;
+
+  void number() {
+    setState(() {
+      num += 1;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Text("Satefull Widget"),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "$num",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 100,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: ElevatedButton(
+                onPressed: number,
+                child: Text("Button"),
+              ),
+            ),
+            Text(
+              "Press Button",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
