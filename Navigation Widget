@@ -1,0 +1,123 @@
+import 'package:flutter/Material.dart';
+import 'package:flutter/cupertino.dart';
+import 'secondscreen.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Navigation",
+      theme: ThemeData(primarySwatch: Colors.red),
+      home: Myhomepage(),
+    );
+  }
+}
+
+class Myhomepage extends StatefulWidget {
+  const Myhomepage({Key? key}) : super(key: key);
+
+  @override
+  _MyhomepageState createState() => _MyhomepageState();
+}
+
+class _MyhomepageState extends State<Myhomepage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Text("Navigation"),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "First Screen",
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Secondscreen(),
+                    ),
+                  );
+                },
+                child: Text("Second Screen"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+#Secondscreen.dart
+
+import 'package:flutter/Material.dart';
+
+class Secondscreen extends StatelessWidget {
+  const Secondscreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Navigation",
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: MySecondscreen(),
+    );
+  }
+}
+
+class MySecondscreen extends StatefulWidget {
+  const MySecondscreen({Key? key}) : super(key: key);
+
+  @override
+  _MyhomepageState createState() => _MyhomepageState();
+}
+
+class _MyhomepageState extends State<MySecondscreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Text("Navigation"),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Second Screen",
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text("FirstPage"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
